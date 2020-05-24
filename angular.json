@@ -121,8 +121,16 @@
               "devServerTarget": "firestarter-demo:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "firestarter-demo"
+    }
+  },
+  "defaultProject": "firestarter-demo",
+  "cli": {
+    "analytics": false
+  }
 }

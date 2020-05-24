@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-firebase-email": {
+      "hosting": {
+        "firestarter-demo": [
+          "angular-firebase-email"
+        ]
+      }
+    }
+  }
+}
