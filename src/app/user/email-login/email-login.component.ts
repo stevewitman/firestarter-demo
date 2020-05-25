@@ -9,35 +9,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
 @Component({
   selector: 'app-email-login',
   templateUrl: './email-login.component.html',
-  styleUrls: ['./email-login.component.scss']
+  styleUrls: ['./email-login.component.scss'],
 })
 export class EmailLoginComponent implements OnInit {
   form: FormGroup;
 
-  type: 'login' | 'signup' | 'reset' = 'signup';
+  type: 'login' | 'signup' | 'reset' = 'login';
   loading = false;
 
   serverMessage: string;
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private fb: FormBuilder
-  ) { }
+  actionCodeSettings = {
+    url: 'https://angular-firebase-email.web.app/login',
+    handleCodeInApp: true,
+    dynamicLinkDomain: 'example.page.link',
+  };
+
+  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.email]
-      ],
-      password: [
-        '',
-        [Validators.minLength(6), Validators.required]
-      ],
-      passwordConfirm: [
-        '',
-        []
-      ]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.minLength(6), Validators.required]],
+      passwordConfirm: ['', []],
     });
   }
 
@@ -99,10 +93,5 @@ export class EmailLoginComponent implements OnInit {
 
     this.loading = false;
   }
-
-
-
-
-
 }
 
